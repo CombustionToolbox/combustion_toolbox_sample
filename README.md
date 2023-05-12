@@ -225,7 +225,7 @@ will show two predefined figures (the expected output is located in './sample/ou
 
 ### 3.3 Example 3:
 
-For this case, we will obtain the pressure ratio-deflection angle and the incidence angle-deflection angle shock polar diagrams for dry air (consisting of 78\% N$_2$, 21\% O$_2$, and 1\% Ar) initially at room conditions ($T_1 = 300$ K, $p_1 = 1$ atm) at different pre-shock Mach numbers $\mathcal{M}_1$ = (2, 3, 5, 14). The results obtained with CT are compared with Caltech's SD-Toolbox, which uses Cantera as the kernel for the thermochemical calculations.
+For this case, we will obtain the pressure ratio-deflection angle and the incidence angle-deflection angle shock polar diagrams for dry air (consisting of 78% N$_2$, 21% O$_2$, and 1% Ar) initially at room conditions ($T_1 = 300$ K, $p_1 = 1$ atm) at different pre-shock Mach numbers $\mathcal{M}_1$ = (2, 3, 5, 14). The results obtained with CT are compared with Caltech's SD-Toolbox, which uses Cantera as the kernel for the thermochemical calculations.
 
 Run the following script:
 ```matlab
@@ -237,18 +237,18 @@ which will show the following figures (the expected output is located in './samp
     <img src="./sample/output/example_3/example_3_pressure.svg" width="600">
 </p>
 
-**Figure 9.** Pressure-deflection shock polar diagrams for air (78\% N$_2$, 21\% O$_2$, and 1\% Ar) at pre-shock temperature $T_1 = 300$ K and pressure $p_1 = 1$ atm, and a range of pre-shock Mach numbers $\mathcal{M}_1$ = (2, 3, 5, 14); solid line: calorically imperfect gas with ionization/dissociation; circles: results obtained with Cantera within Caltech's SD-Toolbox; diamonds: maximum deflection angle $\theta_{\rm max}$.
+**Figure 9.** Pressure-deflection shock polar diagrams for air (78% N$_2$, 21% O$_2$, and 1% Ar) at pre-shock temperature $T_1 = 300$ K and pressure $p_1 = 1$ atm, and a range of pre-shock Mach numbers $\mathcal{M}_1$ = (2, 3, 5, 14); solid line: calorically imperfect gas with ionization/dissociation; circles: results obtained with Cantera within Caltech's SD-Toolbox; diamonds: maximum deflection angle $\theta_{\rm max}$.
 
 <p align="left">
     <img src="./sample/output/example_3/example_3_wave.svg" width="600">
 </p>
 
-**Figure 10.** Wave angle-deflection ressure-deflection shock polar diagrams for air (78\% N$_2$, 21\% O$_2$, and 1\% Ar) at pre-shock temperature $T_1 = 300$ K and pressure $p_1 = 1$ atm, and a range of pre-shock Mach numbers $\mathcal{M}_1$ = (2, 3, 5, 14); solid line: calorically imperfect gas with ionization/dissociation; circles: results obtained with Cantera within Caltech's SD-Toolbox; diamonds: maximum deflection angle $\theta_{\rm max}$.
+**Figure 10.** Wave angle-deflection ressure-deflection shock polar diagrams for air (78% N$_2$, 21% O$_2$, and 1% Ar) at pre-shock temperature $T_1 = 300$ K and pressure $p_1 = 1$ atm, and a range of pre-shock Mach numbers $\mathcal{M}_1$ = (2, 3, 5, 14); solid line: calorically imperfect gas with ionization/dissociation; circles: results obtained with Cantera within Caltech's SD-Toolbox; diamonds: maximum deflection angle $\theta_{\rm max}$.
 
 <p align="left">
     <img src="./sample/output/example_3/example_3_velocity.svg" width="600">
 </p>
 
-**Figure 11.** Post-shock velocity $u_2$ polar diagrams for air (78\% N$_2$, 21\% O$_2$, and 1\% Ar) at pre-shock temperature $T_1 = 300$ K and pressure $p_1 = 1$ atm, and a range of pre-shock Mach numbers $\mathcal{M}_1$ = (2, 3, 5, 14).
+**Figure 11.** Post-shock velocity $u_2$ polar diagrams for air (78% N$_2$, 21% O$_2$, and 1% Ar) at pre-shock temperature $T_1 = 300$ K and pressure $p_1 = 1$ atm, and a range of pre-shock Mach numbers $\mathcal{M}_1$ = (2, 3, 5, 14).
 
 **Note:** This parametric study should take 5-7 seconds at most.
