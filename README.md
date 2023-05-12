@@ -22,7 +22,7 @@ https://github.com/AlbertoCuadra/combustion_toolbox
 
 ## 1. Source code
 
-The source code of the Combustion Toolbox (CT) is organized in the following folders:
+The source code of the Combustion Toolbox (CT) contains the following folders and files in the main directory:
 
 ```terminal
 .combustion_toolbox
