@@ -163,7 +163,7 @@ Once the GUI is started, we should see something similar to the following window
 
 **Figure 3.** Example of how to configure the GUI to reproduce the results of Example 1.
 
-As we can observe, the previous already includes the necessary inputs to perform the parametric study. The steps to complete the parametric analysis are the following:
+As we can observe, the previous figure already includes the necessary inputs to perform the parametric study. The steps to complete the parametric analysis are the following:
 
 1. Go to the `Quick settings` sub-tab and check the item called `Ideal Air`. With this option, we consider that air is composed of 79% of N$_2$ and 21% of O$_2$ on molar basis.
 2. Return to the `inputs` sub-tab and select `Acetylene + Air` as the reactant.
