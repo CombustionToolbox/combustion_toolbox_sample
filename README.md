@@ -170,7 +170,7 @@ As we can observe, the previous figure already includes the necessary inputs to 
 3. Select the list of possible species as products. In this case, we will select a predefined list of species called `Soot formation Extended`, which includes 94 species that typically appear in CHON reactions.
 4. Define the parameter to be varied. In this case, we will vary the equivalence ratio $\phi$ from 0.5 to 4 with a step of 0.05 (decreased to 0.01 for smoother plots). This can be written as `0.5:0.05:4` or with square brackets `[0.5:0.05:4]`.
 5. Define the problem to be solved. In this case, we will solve the problem for an HP transformation called `HP: Adiabatic T and composition at constant P`.
-6. Run the calculation by clicking the `Run` button. The default initial state of the mixture corresponds with the standard conditions ($T_1 = 300$ K, $p = 1$ bar).
+6. Run the calculation by clicking the `Calculate` button. The default initial state of the mixture corresponds with the standard conditions ($T_1 = 300$ K, $p = 1$ bar).
 
 Once the calculation is finished, the lamp located at the bottom of the window should turn green. The results can be visualized in the `results` tab. 
 
