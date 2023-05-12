@@ -20,6 +20,9 @@ https://github.com/AlbertoCuadra/combustion_toolbox
 
 ---
 
+## 0. Requirements
+MATLAB R2021a or higher is required to run the code using the GUI. Otherwise, use the standalone (royalte-free) version of the GUI.
+
 ## 1. Source code
 
 The source code of the Combustion Toolbox (CT) contains the following folders and files in the main directory:
