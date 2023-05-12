@@ -45,14 +45,14 @@ The source code of the Combustion Toolbox (CT) is organized in the following fol
 
 The `databases` folder mainly consists of raw data and *.mat* files that contain the thermochemical properties of the individual chemical species. The `examples` folder includes various examples that demonstrate the wide variety of problems that can be solved with CT. The `gui` folder contains the routines that are specifically designed for the GUI. The `installer` folder contains all the installation files of the GUI: the MATLAB toolbox and the royalty-free stand-alone version. The `modules` folder contains the functions of the different modules, CT-EQUIL, CT-SD, and CT-ROCKET, as well as the routines for initializing CT. The `utils` folder houses utility functions with different purposes. Finally, the `validation` folder includes the routines used to validate CT with the results obtained with other codes, the unit testing files to ensure the correct functionality of the code, and all the graphs generated from these verifications.
 
-Regarding the files in the main source folder, we have the following: the file `run_test.m` runs the unit tests of CT. The file `CONTENTS.m` is a script that provides a brief description of the problems that can be solved with CT. The file `INSTALL.m` is a script that installs the CT code, and the GUI. The file `LICENSE.md` contains the license of CT (GNU General Public License v3.0). Finally, the file `README.md` is the official description in the GitHub repository.
+Regarding the files in the main source folder, we have the following: the file `run_test.m` runs the unit tests of CT. The file `CONTENTS.m` is a script that briefly describes the problems that can be solved with CT. The file `INSTALL.m` is a script that installs the CT code and the GUI. The file `LICENSE.md` contains the license of CT (GNU General Public License v3.0). Finally, the file `README.md` is the official description in the GitHub repository.
 
 
-Additionaly, we have included a `sample` folder that contains two subfolders, `input` and `output`. The `input` folder contains the input files for the examples described below in Sec. 3. The `output` folder contains the expected figures to be obtained.
+Additionally, we have included a `sample` folder that contains two subfolders, `input` and `output`. The `input` folder contains the input files for the examples described below in Sec. 3. The `output` folder contains the expected figures to be obtained.
 
-For a proper description of each routine included in the code, please refer to the [online documentation](https://combustion-toolbox-website.readthedocs.io/en/latest/documentation/functions/index.html). For a detailed description of the output, please refer to the manuscript.
+For an accurate description of each routine included in the code, please refer to the [online documentation](https://combustion-toolbox-website.readthedocs.io/en/latest/documentation/functions/index.html). For a detailed description of the output, please refer to the manuscript.
 
-Laslty, if there is any question, unexpected behavior, or bug in the code, please use the add-on uifeedback (**we do not collect any data from the sender, it can be totally anonymous**, e.g., as email write @test.com). It can be started by writing in the prompt:
+Lastly, if there is any question, unexpected behavior, or bug in the code, please use the add-on uifeedback (**we do not collect any data from the sender, it can be totally anonymous**, e.g., as email write @test.com). It can be started by writing in the prompt:
 ```matlab
 uifeedback()
 ```
@@ -100,7 +100,7 @@ For a more detailed description of the installation process, please refer to the
 
 ## 3. Examples
 
-As described in the manuscript, CT includes a wide variety of examples and validations in the `examples` and `validations` folders, respectively. In this section, we will describe how to run a simple using MATLAB's desktop environment and the GUI. Additionaly, we will show how run two of the validations carried out in the manuscript. 
+As described in the manuscript, CT includes a wide variety of examples and validations in the `examples` and `validations` folders, respectively. In this section, we will describe how to run a simple using MATLAB's desktop environment and the GUI. Additionally, we will show how to run two of the validations carried out in the manuscript. 
 
 ### 3.1 Example 1:
 
@@ -117,7 +117,7 @@ self = set_prop(self, 'TR', 300, 'pR', 1, 'phi', 0.5:0.01:4);
 self.PD.S_Fuel = {'C2H2_acetylene'};
 self.PD.S_Oxidizer = {'N2', 'O2'};
 self.PD.ratio_oxidizers_O2 = [79, 21] ./ 21;
-% Additional inputs (depends of the problem selected)
+% Additional inputs (depends on the problem selected)
 self = set_prop(self, 'pP', self.PD.pR.value); 
 % Solve problem
 self = solve_problem(self, 'HP');
@@ -135,20 +135,20 @@ This will show a summary of the thermodynamic properties and composition of the 
     <img src="./sample/output/example_1/example_1_molar_composition.svg" width="1000">
 </p>
 
-**Figure 1.** Variation of the molar fractions $X_j$ for an HP transformation in lean-to-rich acetylence (C$_2$H$_2$)-air mixture at standard conditions ($T_1 = 300$ K, $p = 1$ bar).
+**Figure 1.** Variation of the molar fractions $X_j$ for an HP transformation in lean-to-rich acetylene (C$_2$H$_2$)-air mixture at standard conditions ($T_1 = 300$ K, $p = 1$ bar).
 
 <p align="left">
     <img src="./sample/output/example_1/example_1_properties.svg" width="1000">
 </p>
 
-**Figure 2.** Variation of different thermodynamic properties (from left to right): temperature , $T$, pressure, $p$, density, $\rho$, enthalpy, $h$, internal energy, $e$, Gibbs energy, $g$, entropy, $s$, and adiabatic index, $\gamma_s$, for an HP transformation in lean-to-rich acetylence (C$_2$H$_2$)-air mixture at standard conditions ($T_1 = 300$ K, $p = 1$ bar).
+**Figure 2.** Variation of different thermodynamic properties (from left to right): temperature, $T$, pressure, $p$, density, $\rho$, enthalpy, $h$, internal energy, $e$, Gibbs energy, $g$, entropy, $s$, and adiabatic index, $\gamma_s$, for an HP transformation in lean-to-rich acetylene (C$_2$H$_2$)-air mixture at standard conditions ($T_1 = 300$ K, $p = 1$ bar).
 
 
-**Note:** This parametric study should not take more than 4-6 seconds.
+**Note:** This parametric study should take at most 4-6 seconds.
 
 #### Using the GUI
 
-The previous example can be also easly performed using the GUI. To do so, we need to run the GUI using the following command in the MATLAB Command Window:
+The previous example can also be easly performed using the GUI. To do so, we need to run the GUI using the following command in the MATLAB 
 ```matlab
 combustion_toolbox()
 ```
@@ -163,13 +163,13 @@ Once the GUI is started, we should see something similar to the following window
 
 **Figure 3.** Example of how to configure the GUI to reproduce the results of Example 1.
 
-As we can observe, the previous already includes the necessary inputs to perform the parametric study. The steps to perform the parametric study are the following:
+As we can observe, the previous already includes the necessary inputs to perform the parametric study. The steps to complete the parametric analysis are the following:
 
-1. Go to the `Quick settings` sub-tab and check the item called `Ideal Air`. With this option, we are considering that air is composed of 79% of N$_2$ and 21% of O$_2$ in molar basis.
-2. Return to the `inputs` sub-tab and select as reactant the `Acetylene + Air`.
-3. Select the list of possible species as products. In this case, we are going to select all a predefined list of species called `Soot formation Extended`, which includes 94 species that typical appear in CHON reactions.
-4. Define the parameter to be varied. In this case, we are going to vary the equivalence ratio $\phi$ from 0.5 to 4 with a step of 0.05 (decreased to 0.01 for smoother plots). This can be written as `0.5:0.05:4` or with square brackets `[0.5:0.05:4]`.
-5. Define the problem to be solved. In this case, we are going to solve the problem for an HP transformation called `HP: Adiabatic T and composition at constant P`.
+1. Go to the `Quick settings` sub-tab and check the item called `Ideal Air`. With this option, we consider that air is composed of 79% of N$_2$ and 21% of O$_2$ on molar basis.
+2. Return to the `inputs` sub-tab and select `Acetylene + Air` as the reactant.
+3. Select the list of possible species as products. In this case, we will select a predefined list of species called `Soot formation Extended`, which includes 94 species that typically appear in CHON reactions.
+4. Define the parameter to be varied. In this case, we will vary the equivalence ratio $\phi$ from 0.5 to 4 with a step of 0.05 (decreased to 0.01 for smoother plots). This can be written as `0.5:0.05:4` or with square brackets `[0.5:0.05:4]`.
+5. Define the problem to be solved. In this case, we will solve the problem for an HP transformation called `HP: Adiabatic T and composition at constant P`.
 6. Run the calculation by clicking the `Run` button. The default initial state of the mixture corresponds with the standard conditions ($T_1 = 300$ K, $p = 1$ bar).
 
 Once the calculation is finished, the lamp located at the bottom of the window should turn green. The results can be visualized in the `results` tab. 
@@ -188,9 +188,9 @@ By clicking the sub-tab `Molar composition` we can observe the molar composition
     <img src="./sample/output/example_1_gui/gui_3_labels.svg" width="600">
 </p>
 
-**Figure 5.** Post-processing the results of `Example 1` through the GUI (part II): In particular, the chemical composition correspond to the case selected in the tree object ($\phi = 0.5$).
+**Figure 5.** Post-processing the results of `Example 1` through the GUI (part II): In particular, the chemical composition corresponds to the case selected in the tree object ($\phi = 0.5$).
 
-Lastly, the GUI also allows to visualize the results in a more interactive way. To do so, we need to click the `Custom Figures` sub-tab. Then by selecting the mixture to be plotted as the products (strP), the equivalence ratio as the parameter to be varied in the x-axis (phi) and the temperature as the property to be plotted in the y-axis (T), we should obtain the following figure:
+Lastly, the GUI also allows us to visualize the results more interactively. To do so, we need to click the `Custom Figures` sub-tab. Then by selecting the mixture to be plotted as the products (strP), the equivalence ratio as the parameter to be varied in the x-axis (phi), and the temperature as the property to be plotted in the y-axis (T), we should obtain the following figure:
 
 <p align="left">
     <img src="./sample/output/example_1_gui/gui_4_labels.svg" width="600">
@@ -214,19 +214,20 @@ will show two predefined figures (the expected output is located in './sample/ou
 
 **Figure 7.** Variation of the molar fractions $X_j$ for a Silica-Phenolic mixture at atmospheric pressure ($p = 1$ atm) with $T \in [200, 5000]$; solid line: numerical results obtained with CT; symbols: numerical results obtained with NASA's CEA.
 
+
 <p align="left">
     <img src="./sample/output/example_2/example_2_properties.svg" width="1000">
 </p>
 
-**Figure 8.** Variation of of different thermodynamic mixture properties (from left to right): density, $\rho$, enthalpy, $h$, internal energy, $e$, Gibbs energy, $g$, specific heat capacity at constant pressure, $c_p$, specific heat capacity at constant pressure, $c_v$, adiabatic index, $\gamma_s$, derivative of the volume with pressure at constant temperature, $(\mathrm{d}v/\mathrm{d}p)_T$, and derivative of the volume with temperature at constant pressure, $(\mathrm{d}v/\mathrm{d}T)_p$, for a Silica-Phenolic mixture at atmospheric pressure ($p = 1$ atm) with $T \in [200, 5000]$; solid line: numerical results obtained with CT; symbols: numerical results obtained with NASA's CEA.
+**Figure 8.** Variation of different thermodynamic mixture properties (from left to right): density, $\rho$, enthalpy, $h$, internal energy, $e$, Gibbs energy, $g$, specific heat capacity at constant pressure, $c_p$, specific heat capacity at constant pressure, $c_v$, adiabatic index, $\gamma_s$, derivative of the volume with pressure at constant temperature, $(\mathrm{d}v/\mathrm{d}p)_T$, and derivative of the volume with the temperature at constant pressure, $(\mathrm{d}v/\mathrm{d}T)_p$, for a Silica-Phenolic mixture at atmospheric pressure ($p = 1$ atm) with $T \in [200, 5000]$; solid line: numerical results obtained with CT; symbols: numerical results obtained with NASA's CEA.
 
-**Note:** This parametric study should not take more than 5-7 seconds.
+**Note:** This parametric study should take 5-7 seconds at most.
 
 ### 3.3 Example 3:
 
-For this case, we will obtain the pressure ratio-deflection angle and the incidence angle-deflection angle shock polar diagrams for dry air (consisting of 78\% N$_2$, 21\% O$_2$, and 1\% Ar) initially at room conditions ($T_1 = 300$ K, $p_1 = 1$ atm) at different pre-shock Mach numbers $\mathcal{M}_1$ = (2, 3, 5, 14). The results obtained with CT are compared with Caltech's SD-Toolbox, which uses Cantera as kernel for the thermochemical calculations.
+For this case, we will obtain the pressure ratio-deflection angle and the incidence angle-deflection angle shock polar diagrams for dry air (consisting of 78\% N$_2$, 21\% O$_2$, and 1\% Ar) initially at room conditions ($T_1 = 300$ K, $p_1 = 1$ atm) at different pre-shock Mach numbers $\mathcal{M}_1$ = (2, 3, 5, 14). The results obtained with CT are compared with Caltech's SD-Toolbox, which uses Cantera as the kernel for the thermochemical calculations.
 
-run the following script:
+Run the following script:
 ```matlab
 run_validation_SHOCK_POLAR_SDToolbox_2
 ```
@@ -250,4 +251,4 @@ which will show the following figures (the expected output is located in './samp
 
 **Figure 11.** Post-shock velocity $u_2$ polar diagrams for air (78\% N$_2$, 21\% O$_2$, and 1\% Ar) at pre-shock temperature $T_1 = 300$ K and pressure $p_1 = 1$ atm, and a range of pre-shock Mach numbers $\mathcal{M}_1$ = (2, 3, 5, 14).
 
-**Note:** This parametric study should not take more than 5-7 seconds.
+**Note:** This parametric study should take 5-7 seconds at most.
