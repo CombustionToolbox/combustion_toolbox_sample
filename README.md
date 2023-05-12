@@ -52,7 +52,7 @@ Additionaly, we have included a `sample` folder that contains two subfolders, `i
 
 For a proper description of each routine included in the code, please refer to the [online documentation](https://combustion-toolbox-website.readthedocs.io/en/latest/documentation/functions/index.html). For a detailed description of the output, please refer to the manuscript.
 
-Laslty, if there is any question, unexpected behavior, or bug in the code, please use the add-on uifeedback as in Fig. 1 (**we do not collect any data from the sender, it can be totally anonymous.**). It can be started by writing in the prompt:
+Laslty, if there is any question, unexpected behavior, or bug in the code, please use the add-on uifeedback (**we do not collect any data from the sender, it can be totally anonymous**, e.g., as email write @test.com). It can be started by writing in the prompt:
 ```matlab
 uifeedback()
 ```
@@ -251,4 +251,3 @@ which will show the following figures (the expected output is located in './samp
 **Figure 11.** Post-shock velocity $u_2$ polar diagrams for air (78\% N$_2$, 21\% O$_2$, and 1\% Ar) at pre-shock temperature $T_1 = 300$ K and pressure $p_1 = 1$ atm, and a range of pre-shock Mach numbers $\mathcal{M}_1$ = (2, 3, 5, 14).
 
 **Note:** This parametric study should not take more than 5-7 seconds.
-
