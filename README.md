@@ -152,6 +152,7 @@ or running it directly from MATLAB's Apps tab.
 Once the GUI is started, we should see something similar to the following window:
 
 ![example_1_gui_1](./sample/input/example_1_gui/gui_1_labels.svg)
+
 **Figure 3.** Example of how to configure the GUI to reproduce the results of Example 1.
 
 As we can observe, the previous already includes the necessary inputs to perform the parametric study. The steps to perform the parametric study are the following:
@@ -168,16 +169,19 @@ Once the calculation is finished, the lamp located at the bottom of the window s
 By clicking the sub-tab `Parameters` and selecting the first case from the tree object, we should see the following:
 
 ![example_1_gui_2](./sample/output/example_1_gui/gui_2_labels.svg)
+
 **Figure 4.** Post-processing the results of `Example 1` through the GUI (part I). In particular, the thermodynamic properties correspond to the case selected in the tree object ($\phi = 0.5$).
 
 By clicking the sub-tab `Molar composition` we can observe the molar composition of the mixture (reactants and products):
 
 ![example_1_gui_3](./sample/output/example_1_gui/gui_4_labels.svg)
+
 **Figure 5.** Post-processing the results of `Example 1` through the GUI (part II): In particular, the chemical composition correspond to the case selected in the tree object ($\phi = 0.5$).
 
 Lastly, the GUI also allows to visualize the results in a more interactive way. To do so, we need to click the `Custom Figures` sub-tab. Then by selecting the mixture to be plotted as the products (strP), the equivalence ratio as the parameter to be varied in the x-axis (phi) and the temperature as the property to be plotted in the y-axis (T), we should obtain the following figure:
 
 ![example_1_gui_4](./sample/output/example_1_gui/gui_3_labels.svg)
+
 **Figure 6.** Post-processing the results of `Example 1` through the GUI (part III).
 
 ### 3.2 Example 2: 
@@ -188,14 +192,15 @@ Writing in the prompt:
 ```matlab
 run_validation_TP_CEA_6()
 ```
-will show two predefined figures (the expected output is located in './sample/output' folder):
+will show two predefined figures (the expected output is located in './sample/output/example_2' folder):
 
 ![example_2_molar_composition](./sample/output/example_2/example_2_molar_composition.svg)
-**Figure 1.** Variation of the molar fractions $X_j$ for a Silica-Phenolic mixture at atmospheric pressure ($p = 1$ atm) with $T \in [200, 5000]$; solid line: numerical results obtained with CT; symbols: numerical results obtained with NASA's CEA.
 
+**Figure 7.** Variation of the molar fractions $X_j$ for a Silica-Phenolic mixture at atmospheric pressure ($p = 1$ atm) with $T \in [200, 5000]$; solid line: numerical results obtained with CT; symbols: numerical results obtained with NASA's CEA.
 
 ![example_2_properties](./sample/output/example_2/example_2_properties.svg)
-**Figure 2.** Variation of of different thermodynamic mixture properties (from left to right): density, $\rho$, enthalpy, $h$, internal energy, $e$, Gibbs energy, $g$, specific heat capacity at constant pressure, $c_p$, specific heat capacity at constant pressure, $c_v$, adiabatic index, $\gamma_s$, derivative of the volume with pressure at constant temperature, $(\mathrm{d}v/\mathrm{d}p)_T$, and derivative of the volume with temperature at constant pressure, $(\mathrm{d}v/\mathrm{d}T)_p$, for a Silica-Phenolic mixture at atmospheric pressure ($p = 1$ atm) with $T \in [200, 5000]$; solid line: numerical results obtained with CT; symbols: numerical results obtained with NASA's CEA.
+
+**Figure 8.** Variation of of different thermodynamic mixture properties (from left to right): density, $\rho$, enthalpy, $h$, internal energy, $e$, Gibbs energy, $g$, specific heat capacity at constant pressure, $c_p$, specific heat capacity at constant pressure, $c_v$, adiabatic index, $\gamma_s$, derivative of the volume with pressure at constant temperature, $(\mathrm{d}v/\mathrm{d}p)_T$, and derivative of the volume with temperature at constant pressure, $(\mathrm{d}v/\mathrm{d}T)_p$, for a Silica-Phenolic mixture at atmospheric pressure ($p = 1$ atm) with $T \in [200, 5000]$; solid line: numerical results obtained with CT; symbols: numerical results obtained with NASA's CEA.
 
 **Note:** This parametric study should not take more than 5-7 seconds.
 
@@ -207,16 +212,19 @@ run the following script:
 ```matlab
 run_validation_SHOCK_POLAR_SDToolbox_2
 ```
-which will show the following figures (the expected output is located in './sample/output' folder):
+which will show the following figures (the expected output is located in './sample/output/example_3' folder):
 
 ![example_3_pressure](./sample/output/example_3/example_3_pressure.svg)
-**Figure 3.** Pressure-deflection shock polar diagrams for air (78\% N$_2$, 21\% O$_2$, and 1\% Ar) at pre-shock temperature $T_1 = 300$ K and pressure $p_1 = 1$ atm, and a range of pre-shock Mach numbers $\mathcal{M}_1$ = (2, 3, 5, 14); solid line: calorically imperfect gas with ionization/dissociation; circles: results obtained with Cantera within Caltech's SD-Toolbox; diamonds: maximum deflection angle $\theta_{\rm max}$.
+
+**Figure 9.** Pressure-deflection shock polar diagrams for air (78\% N$_2$, 21\% O$_2$, and 1\% Ar) at pre-shock temperature $T_1 = 300$ K and pressure $p_1 = 1$ atm, and a range of pre-shock Mach numbers $\mathcal{M}_1$ = (2, 3, 5, 14); solid line: calorically imperfect gas with ionization/dissociation; circles: results obtained with Cantera within Caltech's SD-Toolbox; diamonds: maximum deflection angle $\theta_{\rm max}$.
 
 ![example_3_wave](./sample/output/example_3/example_3_wave.svg)
-**Figure 4.** Wave angle-deflection ressure-deflection shock polar diagrams for air (78\% N$_2$, 21\% O$_2$, and 1\% Ar) at pre-shock temperature $T_1 = 300$ K and pressure $p_1 = 1$ atm, and a range of pre-shock Mach numbers $\mathcal{M}_1$ = (2, 3, 5, 14); solid line: calorically imperfect gas with ionization/dissociation; circles: results obtained with Cantera within Caltech's SD-Toolbox; diamonds: maximum deflection angle $\theta_{\rm max}$.
+
+**Figure 10.** Wave angle-deflection ressure-deflection shock polar diagrams for air (78\% N$_2$, 21\% O$_2$, and 1\% Ar) at pre-shock temperature $T_1 = 300$ K and pressure $p_1 = 1$ atm, and a range of pre-shock Mach numbers $\mathcal{M}_1$ = (2, 3, 5, 14); solid line: calorically imperfect gas with ionization/dissociation; circles: results obtained with Cantera within Caltech's SD-Toolbox; diamonds: maximum deflection angle $\theta_{\rm max}$.
 
 ![example_3_velocity](./sample/output/example_3/example_3_velocity.svg)
-**Figure 5.** Post-shock velocity $u_2$ polar diagrams for air (78\% N$_2$, 21\% O$_2$, and 1\% Ar) at pre-shock temperature $T_1 = 300$ K and pressure $p_1 = 1$ atm, and a range of pre-shock Mach numbers $\mathcal{M}_1$ = (2, 3, 5, 14).
+
+**Figure 11.** Post-shock velocity $u_2$ polar diagrams for air (78\% N$_2$, 21\% O$_2$, and 1\% Ar) at pre-shock temperature $T_1 = 300$ K and pressure $p_1 = 1$ atm, and a range of pre-shock Mach numbers $\mathcal{M}_1$ = (2, 3, 5, 14).
 
 **Note:** This parametric study should not take more than 5-7 seconds.
 
