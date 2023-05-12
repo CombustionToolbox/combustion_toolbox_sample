@@ -16,7 +16,7 @@ https://combustion-toolbox-website.readthedocs.io/en/latest/
 https://github.com/AlbertoCuadra/combustion_toolbox
 
 ---
-**Note: This README file is written in [Markdown](https://guides.github.com/features/mastering-markdown/). Please use a Markdown editor to visualize it properly.**
+**Note: This README file is written in [Markdown](https://guides.github.com/features/mastering-markdown/). Please use a Markdown editor to visualize it properly. Otherwise, you can use the [online version](https://github.com/AlbertoCuadra/combustion_toolbox_sample) of this file.**
 
 ---
 
