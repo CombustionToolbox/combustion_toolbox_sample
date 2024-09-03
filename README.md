@@ -13,10 +13,10 @@ acuadra@ing.uc3m.es (A. Cuadra)
 https://combustion-toolbox-website.readthedocs.io/en/latest/
 
 **Repository for source code**
-https://github.com/AlbertoCuadra/combustion_toolbox
+https://github.com/CombustionToolbox/combustion_toolbox
 
 ---
-**Note: This README file is written in [Markdown](https://guides.github.com/features/mastering-markdown/). Please use a Markdown editor to visualize it properly. Otherwise, you can use the [online version](https://github.com/AlbertoCuadra/combustion_toolbox_sample) of this file.**
+**Note: This README file is written in [Markdown](https://guides.github.com/features/mastering-markdown/). Please use a Markdown editor to visualize it properly. Otherwise, you can use the [online version](https://github.com/CombustionToolbox/combustion_toolbox_sample) of this file.**
 
 ---
 
@@ -29,11 +29,11 @@ The source code of the Combustion Toolbox (CT) contains the following folders an
 
 ```terminal
 .combustion_toolbox
+|-- +combustiontoolbox
 |-- databases
 |-- examples
 |-- gui
 |-- installer
-|-- modules
 |-- utils
 |-- validations
 |-- run_test.m
@@ -46,7 +46,7 @@ The source code of the Combustion Toolbox (CT) contains the following folders an
 `-- README.md
 ```
 
-The `databases` folder mainly consists of raw data and *.mat* files that contain the thermochemical properties of the individual chemical species. The `examples` folder includes various examples that demonstrate the wide variety of problems that can be solved with CT. The `gui` folder contains the routines that are specifically designed for the GUI. The `installer` folder contains all the installation files of the GUI: the MATLAB toolbox and the royalty-free stand-alone version. The `modules` folder contains the functions of the different modules, CT-EQUIL, CT-SD, and CT-ROCKET, as well as the routines for initializing CT. The `utils` folder houses utility functions with different purposes. Finally, the `validation` folder includes the routines used to validate CT with the results obtained with other codes, the unit testing files to ensure the correct functionality of the code, and all the graphs generated from these verifications.
+The `+combustiontoolbox` folder encapsulates the different modules (namespaces) implemented in CT, such as CT-EQUIL (*+equilibrium*), CT-SD (*+shockdetonation*), and CT-ROCKET (*+rocket*). The `databases` folder mainly consists of raw data and *.mat* files that contain the thermochemical properties of the individual chemical species. The `examples` folder includes various examples that demonstrate the wide variety of problems that can be solved with CT. The `gui` folder contains the routines that are specifically designed for the GUI. The `installer` folder contains all the installation files of the GUI: the MATLAB toolbox and the royalty-free stand-alone version for different operative systems. The `utils` folder houses utility functions with different purposes. Finally, the `validation` folder includes the routines used to validate CT with the results obtained with other codes, the unit testing files to ensure the correct functionality of the code, and all the graphs generated from these verifications.
 
 Regarding the files in the main source folder, we have the following: the file `run_test.m` runs the unit tests of CT. The file `CONTENTS.m` is a script that briefly describes the problems that can be solved with CT. The file `INSTALL.m` is a script that installs the CT code and the GUI. The file `LICENSE.md` contains the license of CT (GNU General Public License v3.0). Finally, the file `README.md` is the official description in the GitHub repository.
 
@@ -75,29 +75,6 @@ INSTALL()
 
 3. This will add the necessary folders to the MATLAB path and also install the Combustion Toolbox GUI. 
 
-Now, Combustion Toolbox can be used using MATLAB. To verify that the installation was successful, please write in the prompt:
-```matlab
-self = App
-```
-which will show in MATLAB's command window:
-```matlab
-Loading NASA database ... OK!
-NASA database with thermo loaded from main path ... OK!
-
-self = 
-
-  struct with fields:
-
-            E: [1×1 struct]
-            S: [1×1 struct]
-            C: [1×1 struct]
-         Misc: [1×1 struct]
-           PD: [1×1 struct]
-           PS: [1×1 struct]
-           TN: [1×1 struct]
-    DB_master: [1×1 struct]
-           DB: [1×1 struct]
-```
 
 For a more detailed description of the installation process, please refer to the [online documentation](https://combustion-toolbox-website.readthedocs.io/en/latest/install.html).
 
@@ -113,23 +90,32 @@ For this first case, we are going to perform a parametric study of the adiabatic
 
 Let's write the following code in the prompt (or run `example_1.m` in the `sample/input` folder):
 ```matlab
-% Initialize
-self = App('Soot formation extended');
-% Initial conditions
-self = set_prop(self, 'TR', 300, 'pR', 1, 'phi', 0.5:0.01:4);
-self.PD.S_Fuel = {'C2H2_acetylene'};
-self.PD.S_Oxidizer = {'N2', 'O2'};
-self.PD.ratio_oxidizers_O2 = [79, 21] ./ 21;
-% Additional inputs (depends on the problem selected)
-self = set_prop(self, 'pP', self.PD.pR.value); 
+% Import packages
+import combustiontoolbox.databases.NasaDatabase
+import combustiontoolbox.core.*
+import combustiontoolbox.equilibrium.*
+% Get Nasa database
+DB = NasaDatabase();
+% Define chemical system
+system = ChemicalSystem(DB, 'soot formation extended');
+% Initialize mixture
+mix = Mixture(system);
+% Define chemical state
+set(mix, {'C2H2_acetylene'}, 'fuel', 1);
+set(mix, {'N2', 'O2'}, 'oxidizer', [79, 21] / 21);
+% Define properties
+mixArray = setProperties(mix, 'T', 300, 'p', 1, 'equivalenceRatio', 0.5:0.01:4);
+% Initialize solver
+solver = EquilibriumSolver('problemType', 'HP');
 % Solve problem
-self = solve_problem(self, 'HP');
-% Miscellaneous
-self.Misc.display_species = {'CO2', 'CO', 'H2O', 'H2', 'O2', 'N2',...
-                             'HCN', 'H', 'OH', 'O', 'CN', 'NH3', 'CH4', 'C2H4',...
-                             'CH3', 'NO', 'HCO', 'NH2', 'NH', 'N', 'CH', 'Cbgrb'};
-% Display output (plots)
-post_results(self);
+solver.solveArray(mixArray);
+% Set displaySpecies
+displaySpecies = {'CO2', 'CO', 'H2O', 'H2', 'O2', 'N2',...
+                  'HCN','H','OH','O','CN','NH3','CH4','C2H4','CH3',...
+                  'NO','HCO','NH2','NH','N','CH','Cbgrb'};
+solver.plotConfig.displaySpecies = displaySpecies;
+% Generate report
+report(solver, mixArray);
 ```
 
 This will show a summary of the thermodynamic properties and composition of the mixture in the MATLAB Command Window, and the following figures (the expected output is located in './sample/output/example_1' folder):
@@ -161,7 +147,7 @@ or running it directly from MATLAB's Apps tab.
 Once the GUI is started, we should see something similar to the following window:
 
 <p align="left">
-    <img src="./sample/input/example_1_gui/gui_1_labels.svg" width="600">
+    <img src="./sample/input/example_1_gui/gui_cuadra2024_labels_1.svg" width="600">
 </p>
 
 **Figure 3.** Example of how to configure the GUI to reproduce the results of Example 1.
@@ -171,7 +157,7 @@ As we can observe, the previous figure already includes the necessary inputs to 
 1. Go to the `Quick settings` sub-tab and check the item called `Ideal Air`. With this option, we consider that air is composed of 79% of N$_2$ and 21% of O$_2$ on molar basis.
 2. Return to the `inputs` sub-tab and select `Acetylene + Air` as the reactant.
 3. Select the list of possible species as products. In this case, we will select a predefined list of species called `Soot formation Extended`, which includes 94 species that typically appear in CHON reactions.
-4. Define the parameter to be varied. In this case, we will vary the equivalence ratio $\phi$ from 0.5 to 4 with a step of 0.05 (decreased to 0.01 for smoother plots). This can be written as `0.5:0.05:4` or with square brackets `[0.5:0.05:4]`.
+4. Define the parameter to be varied. In this case, we will vary the equivalence ratio $\phi$ from 0.5 to 4 with a step of 0.05 (decreased to 0.01 for smoother plots). To specify a uniform grid distribution, write `XX:YY:ZZ`, where `XX` represents the start point, `YY` the step size, and `ZZ` the final point. Thus, for this case we have to write `0.5:0.01:4`.
 5. Define the problem to be solved. In this case, we will solve the problem for an HP transformation called `HP: Adiabatic T and composition at constant P`.
 6. Run the calculation by clicking the `Calculate` button. The default initial state of the mixture corresponds with the standard conditions ($T_1 = 300$ K, $p = 1$ bar).
 
@@ -180,7 +166,7 @@ Once the calculation is finished, the lamp located at the bottom of the window s
 By clicking the sub-tab `Parameters` and selecting the first case from the tree object, we should see the following:
 
 <p align="left">
-    <img src="./sample/output/example_1_gui/gui_2_labels.svg" width="600">
+    <img src="./sample/output/example_1_gui/gui_cuadra2024_labels_2.svg" width="600">
 </p>
 
 **Figure 4.** Post-processing the results of `Example 1` through the GUI (part I). In particular, the thermodynamic properties correspond to the case selected in the tree object ($\phi = 0.5$).
@@ -188,15 +174,15 @@ By clicking the sub-tab `Parameters` and selecting the first case from the tree 
 By clicking the sub-tab `Molar composition` we can observe the molar composition of the mixture (reactants and products):
 
 <p align="left">
-    <img src="./sample/output/example_1_gui/gui_3_labels.svg" width="600">
+    <img src="./sample/output/example_1_gui/gui_cuadra2024_labels_3.svg" width="600">
 </p>
 
 **Figure 5.** Post-processing the results of `Example 1` through the GUI (part II): In particular, the chemical composition corresponds to the case selected in the tree object ($\phi = 0.5$).
 
-Lastly, the GUI also allows us to visualize the results more interactively. To do so, we need to click the `Custom Figures` sub-tab. Then by selecting the mixture to be plotted as the products (strP), the equivalence ratio as the parameter to be varied in the x-axis (phi), and the temperature as the property to be plotted in the y-axis (T), we should obtain the following figure:
+Lastly, the GUI also allows us to visualize the results more interactively. To do so, we need to click the `Custom Figures` sub-tab. Then by selecting the mixture to be plotted as the products (mix2), the equivalence ratio as the parameter to be varied in the x-axis (equivalenceRatio), and the temperature as the property to be plotted in the y-axis (T), we should obtain the following figure:
 
 <p align="left">
-    <img src="./sample/output/example_1_gui/gui_4_labels.svg" width="600">
+    <img src="./sample/output/example_1_gui/gui_cuadra2024_labels_4.svg" width="600">
 </p>
 
 **Figure 6.** Post-processing the results of `Example 1` through the GUI (part III).
